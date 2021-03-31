@@ -34,5 +34,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/entidades', function () {
     return view('entidades');
 })->name('entidades');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/lda', function () {
+    return view('lda');
+})->name('lda');
+Route::middleware(['auth:sanctum', 'verified'])->get('/eventos', function () {
+    return view('eventos');
+})->name('eventos');
+Route::middleware(['auth:sanctum', 'verified'])->get('/invitados', function () {
+    return view('invitados');
+})->name('invitados');
+
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/horarios', Horarios::class)->name('horarios');

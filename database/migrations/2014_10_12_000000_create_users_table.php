@@ -17,11 +17,17 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->integer('cedula')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('id_cargo')->nullable();
+            $table->integer('id_area')->nullable();
+            $table->string('codigo')->nullable();
+            $table->integer('id_entidad')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
+            $table->integer('rol');
             $table->timestamps();
         });
     }

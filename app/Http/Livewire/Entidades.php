@@ -32,6 +32,9 @@ class Entidades extends Component
 
     public function render()
     {   
+        if(!rol(34)){
+            abort(403);
+        }
         $entidades = EntidadesModel::latest('id')
         ->when( $this->q, function($query) {
                 return $query->where('nombre', 'like', '%'.$this->q . '%')
@@ -76,7 +79,7 @@ class Entidades extends Component
     }
     public function updateEntidad(){
         $this->validate([
-            'nombre' => 'required|',
+            'nombre' => 'required',
             'nit' => 'required',
             'contacto' => 'required'
         ]);

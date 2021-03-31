@@ -4,6 +4,20 @@
         'route'=> route('dashboard'),
         'active'=> request()->routeIs('dashboard')
         ],
+        ['name'=> 'Parametros',
+        'route'=> route('dashboard'),
+        'active'=> request()->routeIs('dashboard')
+        ],
+        ['name'=> 'Analitica',
+        'route'=> route('dashboard'),
+        'active'=> request()->routeIs('dashboard')
+        ],
+        ['name'=> 'Crear LDA',
+        'route'=> route('dashboard'),
+        'active'=> request()->routeIs('dashboard')
+        ]
+    ];
+    $parametros = [
         ['name'=> 'Horarios',
         'route'=> route('horarios'),
         'active'=> request()->routeIs('horarios')
@@ -15,6 +29,14 @@
         ['name'=> 'Entidades',
         'route'=> route('entidades'),
         'active'=> request()->routeIs('entidades')
+        ],
+        ['name'=> 'Eventos',
+        'route'=> route('eventos'),
+        'active'=> request()->routeIs('eventos')
+        ],
+        ['name'=> 'Invitados',
+        'route'=> route('invitados'),
+        'active'=> request()->routeIs('invitados')
         ]
     ];
 @endphp
@@ -33,11 +55,33 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    @foreach($links as $link)
-                        <x-jet-nav-link href="{{ $link['route'] }}" :active="$link['active']">
-                            {{$link['name']}}
-                        </x-jet-nav-link>
-                    @endforeach
+                    <x-jet-nav-link href="/dashboard" :active="request()->routeIs('dashboard')">
+                                Inicio
+                    </x-jet-nav-link>
+                    <x-jet-dropdown class="my-6">
+                        <x-slot name="trigger">
+                            <x-jet-nav-link class="inline-flex items-center px-3 py-2 my-5" :active="request()->routeIs('horarios') || request()->routeIs('cargos') || request()->routeIs('entidades')">
+                                Parametros
+                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                            </x-jet-nav-link>
+                        </x-slot>
+                        <x-slot name="content">
+                            @foreach($parametros as $parametro)
+                                <x-jet-dropdown-link  href="{{ $parametro['route'] }}"> 
+                                {{$parametro['name']}}
+                                </x-jet-dropdown-link>
+                            @endforeach
+                        </x-slot>
+                    </x-jet-dropdown>
+                    <x-jet-nav-link href="/dashboard" :active="request()->routeIs('dashboard')">
+                        Analitica
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="/lda" :active="request()->routeIs('lda')">
+                        Craer LDA
+                    </x-jet-nav-link>
+                    
                 </div>
             </div>
 
