@@ -13,12 +13,23 @@
         @enderror
     </div>
     <div class="mt-2">
-        <label for="">Asignar Consultor</label>
-        <select wire:model='consultor' class="form-control">
-            <option value="">-- Seleccione Opcion --</option>
-        
-        </select>
-        @error('consultor')
+        <label for="">Nombre del Invitado</label>
+        <input type="text" wire_model="nombre" class="form-control">
+        @error('nombre')
+            <p class="text-xs text-red-500 italic">{{$message}}</p>
+        @enderror
+    </div>
+    <div class="mt-2">
+        <label for="">Cedula del Invitado</label>
+        <input type="number" wire_model="cedula" class="form-control">
+        @error('cedula')
+            <p class="text-xs text-red-500 italic">{{$message}}</p>
+        @enderror
+    </div>
+    <div class="mt-2">
+        <label for="">Correo del Invitado</label>
+        <input type="email" wire_model="correo" class="form-control">
+        @error('correo')
             <p class="text-xs text-red-500 italic">{{$message}}</p>
         @enderror
     </div>
